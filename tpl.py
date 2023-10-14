@@ -8,7 +8,7 @@ basedir=os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__)
 app.config['SECRET_KEY']='Khang Python-Flask Web App'
 # app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///'+os.path.join(basedir,'app.db')
-app.config['SQLALCHEMY_DATABASE_URI']='postgres://ryjfmzscusuqan:7b60b5c3c25e730459f1a24dbb554c06d98f78f5727ad8962d824a84111a39f8@ec2-44-213-228-107.compute-1.amazonaws.com:5432/d36ouh0vnvkc79'
+app.config['SQLALCHEMY_DATABASE_URI']='postgres://zglbyoyrsyvazm:3d6843f84e0029209c3eaa93e79bb5fa754af8710a3edee3a9b91c7d5c828a4f@ec2-44-213-228-107.compute-1.amazonaws.com:5432/da8nc3b2n3kgea'
 
 app.config['SQLITECHEMY_TRACK_MODIFICATIONS']=False
 app.app_context().push() 
