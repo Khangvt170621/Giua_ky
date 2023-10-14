@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/bootstrap-4.0.0-dist/css/bootstrap.min.css">
+    <title>To do List App</title>
+</head>
+<body>
+    <div class="jumbotron" style="margin-bottom: 0;">
+        <a href="/userHome" class="navbar-brand">
+            <img src="../static/image/Logo.png" alt="logo" style="height: 300px;">
+        </a>
+    </div>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="/userHome" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="/newTask" class="nav-link">New Task</a>
+            </li>
+            <li class="nav-item">
+                <a href="/logOut" class="nav-link">Log Out</a>
+            </li>
+        </ul>
+    </nav>
+    {% with messages=get_flashed_messages()%}
+    {% if messages %}
+        {% for messages in messages %}
+        <div class="alert alert-danger">
+            <strong>Error: </strong>[{{messages}}]
+        </div>
+        {%endfor%}
+    {%endif%}
+    {%endwith%}
+    {% block content %}{%endblock%}
+    <!-- footer -->
+    <div class="jumbotron text-center" style="margin-bottom: 0;">
+        <p>Copyright &copy;2020 by khangvt</p>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,47 @@
+{%extends "userbase.html"%}
+{%block content%}
+    <div class="container">
+        <div class="jumptron text-center">
+            <h1>Welcome {{user.first_name}} {{user.last_name}}</h1>
+        </div>
+        <div class="jumbotron text-center">
+            {% if task %}
+                <h1>Edit Task</h1>
+            {%else%}
+                <h1>New Task</h1>
+            {%endif%}
+        <form action="/newTask" method="post" novalidate>
+            {{form.hidden_tag()}}
+            {% if task %}
+                <input type="hidden" name="hiddenTaskId" value="{{task.task_id}}">
+            {%else%}
+                <input type="hidden" name="hiddenTaskId" value="0">
+            {%endif%}
+            <div class="form-group">
+                {{form.inputDescription.label(class="sr-only")}}
+                {{form.inputDescription(class="form-control",placeholder="Description")}}
+                {%if form.inputDescription.errors %}
+                    {%for error in form.inputDescription.errors%}
+                        <div class="alert alert-danger">
+                                <strong>Error:</strong>[{{error}}]
+                            </div>
+                        {%endfor%}
+                    {%endif%}
+                </div>
+                <div class="form-group">
+                    {{form.inputPriority(class="form-control", placeholder="Priority")}}
+                </div>
+                <p class="lead"></p>
+                <p>
+                    {% if task %}
+                    {{form.submit2(class="btn btn-lg btn-success btn-block")}}
+                    {%else%}
+                        {{form.submit1(class="btn btn-lg btn-success btn-block")}}
+                    {%endif%}
+                    
+                    <a href="/userHome" class="btn btn-lg btn-warning btn-block">Cancel</a>
+                </p>
+            </form>
+        </div>
+    </div>
+{%endblock%}
