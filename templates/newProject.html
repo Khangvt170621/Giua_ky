@@ -1,0 +1,60 @@
+{%extends "userbase.html"%}
+{%block content%}
+    <div class="container">
+        <div class="jumptron text-center">
+            <h1>Welcome {{user.first_name}} {{user.last_name}}</h1>
+        </div>
+        <div class="jumbotron text-center">
+            {% if task %}
+                <h1>Edit Project</h1>
+            {%else%}
+                <h1>New Project</h1>
+            {%endif%}
+        <form action="/newProject" method="post" novalidate>
+            {{form.hidden_tag()}}
+            {% if project %}
+                <input type="hidden" name="hiddenProjectId" value="{{project.project_id}}">
+            {%else%}
+                <input type="hidden" name="hiddenProjectId" value="0">
+            {%endif%}
+            <div class="form-group">
+                {{form.inputName.label(class="sr-only")}}
+                {{form.inputName(class="form-control",placeholder="Name")}}
+                {%if form.inputName.errors %}
+                    {%for error in form.inputName.errors%}
+                        <div class="alert alert-danger">
+                            <strong>Error:</strong>[{{error}}]
+                        </div>
+                    {%endfor%}
+                {%endif%}
+                {{form.inputDescription.label(class="sr-only")}}
+                {{form.inputDescription(class="form-control",placeholder="Description")}}
+                {%if form.inputDescription.errors %}
+                    {%for error in form.inputDescription.errors%}
+                        <div class="alert alert-danger">
+                            <strong>Error:</strong>[{{error}}]
+                        </div>
+                    {%endfor%}
+                {%endif%}
+                {{form.inputDeadline.label(class="sr-only")}}
+                {{form.inputDeadline(class="form-control",placeholder="Deadline")}}
+                {%if form.inputDeadline.errors %}
+                    {%for error in form.inputDeadline.errors%}
+                        <div class="alert alert-danger">
+                            <strong>Error:</strong>[{{error}}]
+                        </div>
+                    {%endfor%}
+                {%endif%}
+                </div>
+                <div class="form-group">
+                    {{form.inputStatus(class="form-control", placeholder="Status")}}
+                </div>
+                <p class="lead"></p>
+                <p>
+                    {{form.submit(class="btn btn-lg btn-success btn-block")}}
+                    <a href="/userHome" class="btn btn-lg btn-warning btn-block">Cancel</a>
+                </p>
+            </form>
+        </div>
+    </div>
+{%endblock%}

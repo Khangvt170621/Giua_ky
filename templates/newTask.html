@@ -18,23 +18,51 @@
                 <input type="hidden" name="hiddenTaskId" value="0">
             {%endif%}
             <div class="form-group">
+                {{form.inputProject(class="form-control", placeholder="Status")}}
+            </div>
+            
+            <div class="form-group">
                 {{form.inputDescription.label(class="sr-only")}}
                 {{form.inputDescription(class="form-control",placeholder="Description")}}
                 {%if form.inputDescription.errors %}
                     {%for error in form.inputDescription.errors%}
                         <div class="alert alert-danger">
-                                <strong>Error:</strong>[{{error}}]
-                            </div>
-                        {%endfor%}
-                    {%endif%}
+                            <strong>Error:</strong>[{{error}}]
+                        </div>
+                    {%endfor%}
+                {%endif%}
+            </div>
+            <div class="form-group">
+                {{form.inputDeadline.label(class="sr-only")}}
+                {{form.inputDeadline(class="form-control",placeholder="Deadline")}}
+                {%if form.inputDeadline.errors %}
+                    {%for error in form.inputDeadline.errors%}
+                        <div class="alert alert-danger">
+                            <strong>Error:</strong>[{{error}}]
+                        </div>
+                    {%endfor%}
+                {%endif%}
+            </div>
+            {% if task %}
+            <div class="form-group">
+                {{form.inputStatus(class="form-control", placeholder="Status")}}
+            </div>
+            {%else%}
+                <div class="form-group form-control text-left">
+                    Chưa thực hiện
                 </div>
-                <div class="form-group">
-                    {{form.inputPriority(class="form-control", placeholder="Priority")}}
+                <div class="form-group" hidden>
+                    {{form.inputStatus(class="form-control", placeholder="Status")}}
                 </div>
+            {%endif%}
+            
+            <div class="form-group">
+                {{form.inputPriority(class="form-control", placeholder="Priority")}}
+            </div>
                 <p class="lead"></p>
                 <p>
                     {% if task %}
-                    {{form.submit2(class="btn btn-lg btn-success btn-block")}}
+                        {{form.submit2(class="btn btn-lg btn-success btn-block")}}
                     {%else%}
                         {{form.submit1(class="btn btn-lg btn-success btn-block")}}
                     {%endif%}

@@ -22,7 +22,25 @@
                 <a href="/newTask" class="nav-link">New Task</a>
             </li>
             <li class="nav-item">
+                <a href="/newProject" class="nav-link">New Project</a>
+            </li>
+            <li class="nav-item">
                 <a href="/logOut" class="nav-link">Log Out</a>
+            </li>
+            <li class="nav-item">
+                <form method="GET" action="/search">
+                    
+                    <select name="status">
+                        <option value="">-- Tất cả trạng thái --</option>
+                        <option value="1">Chưa thực hiện</option>
+                        <option value="2">Đang thực hiện</option>
+                        <option value="3">Quá hạn</option>
+                        <option value="4">Hoàn thành</option>
+                    </select>
+                    <input type="text" name="search_query" placeholder="Tìm kiếm theo tên">
+                    <input type="submit" value="Tìm kiếm">
+                </form>
+                
             </li>
         </ul>
     </nav>
